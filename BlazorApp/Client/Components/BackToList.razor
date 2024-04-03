@@ -1,0 +1,23 @@
+﻿@inject NavigationManager _navManager
+
+@* The component receives a Target parameter through its input property. This target specifies the relative URL path of the list page the user should be redirected to.
+When the user clicks the button, the NavigateToList method is invoked.
+Inside NavigateToList, the component constructs the complete navigation URL by combining the application's base URI retrieved from _navManager.BaseUri and the Target parameter.
+Finally, the _navManager.NavigateTo method is used to navigate the user to the constructed URL.  *@
+
+<button class="btn btn-outline-dark" onclick="@NavigateToList">
+    <span class="oi oi-arrow-left"></span>
+    Back to list
+</button>
+
+@code {
+    //This parameter defines the target URL relative to the application's base URI where the user will be navigated upon clicking the button.
+    [Parameter] public string Target { get; set; }
+
+
+
+    void NavigateToList()
+    {
+        _navManager.NavigateTo($"{_navManager.BaseUri}{Target}");
+    }
+}
