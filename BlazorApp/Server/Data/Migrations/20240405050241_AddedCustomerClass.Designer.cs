@@ -4,6 +4,7 @@ using BlazorApp.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorApp.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240405050241_AddedCustomerClass")]
+    partial class AddedCustomerClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,44 +140,6 @@ namespace BlazorApp.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("4832b897-b0d4-48ad-83cd-791fccfd6110"),
-                            Address = "Random st 123",
-                            City = "Volos",
-                            CompanyName = "Hp",
-                            ContactName = "Fotis",
-                            Country = "Greece",
-                            Phone = "695 123 1234",
-                            PostalCode = "12345",
-                            Region = "Magn"
-                        },
-                        new
-                        {
-                            Id = new Guid("4832b897-b0d4-48ad-83cd-791fccfd6112"),
-                            Address = "Random st 13",
-                            City = "Volos",
-                            CompanyName = "Asus",
-                            ContactName = "Giannis",
-                            Country = "Greece",
-                            Phone = "695 123 1235",
-                            PostalCode = "12345",
-                            Region = "Magn"
-                        },
-                        new
-                        {
-                            Id = new Guid("4832b897-b0d4-48ad-83cd-791fccfd6410"),
-                            Address = "Random st 124",
-                            City = "Volos",
-                            CompanyName = "NoCompny",
-                            ContactName = "tasos",
-                            Country = "Greece",
-                            Phone = "695 123 1224",
-                            PostalCode = "12345",
-                            Region = "Magn"
-                        });
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -344,22 +308,6 @@ namespace BlazorApp.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "cd522855-7b7f-4377-a7d8-d976a37c46a3",
-                            ConcurrencyStamp = "3ae6fe10-8d9e-4faf-a98e-c508f52e48dd",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "6e5c4828-733d-4374-bb6e-d60a5542dabe",
-                            ConcurrencyStamp = "87d140ca-a2ac-4393-bec4-e72f47dcfc35",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -449,18 +397,6 @@ namespace BlazorApp.Server.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "a45725d2-d6e8-4a36-8e9c-cbc7e0fefea4",
-                            RoleId = "bb45afee-d28a-4085-96ff-60297128b8d3"
-                        },
-                        new
-                        {
-                            UserId = "a45725d2-d6e8-4a36-8e9c-cbc7e0fefea4",
-                            RoleId = "f7414aec-7dd9-4c15-b853-461b3e68bada"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
