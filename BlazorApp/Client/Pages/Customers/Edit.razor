@@ -1,0 +1,13 @@
+﻿@page "/customers/edit/{id}"
+
+@* This Blazor component, named Edit, handles the editing of existing customer data.
+It retrieves a customer's information based on a given ID, allows for modification, and submits updated data to the server for persistence. *@
+
+<h3>Edit Customer @customer.CompanyName</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="@EditCustomer" customer="customer"></FormComponent>
+
+@code {
+
+
+}

@@ -1,0 +1,12 @@
+﻿@page "/customers/create/"
+@* This Blazor component (Create.cs) is part of the Customers section and is responsible for creating new customer entries.
+It provides a form for users to enter customer details and submits the data to the server upon form submission. *@
+
+<h3 class="card-title">Create Customer</h3>
+<hr />
+<br />
+<FormComponent ButtonText="Create Customer" customer="customer" OnValidSubmit="@CreateCustomer"></FormComponent>
+
+@code {
+    }
+

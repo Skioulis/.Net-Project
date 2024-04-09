@@ -1,0 +1,66 @@
+﻿@* The Customer index component is designed to display a list of customers along with basic CRUD (Create, Read, Update, Delete) functionality.
+
+It utilizes Razor syntax combined with C# to generate dynamic HTML content. This component is part of a web application built using ASP.NET Core. *@
+
+@page "/customers/"
+
+
+<h3 class="card-title">Customer List</h3>
+<hr />
+<br />
+
+<a href="/customers/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+</a>
+
+<br />
+<br />
+@if (Customers == null)
+{
+    <div class"alert alert-info">Loading Customers</div>
+}
+else
+{
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Phone Number</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Customers)
+            {
+                <tr>
+                    <td>@customer.CompanyName</td>
+                    <td>@customer.ContactName</td>
+                    <td>@(CountryPhone(customer))</td>
+
+                    <td>@customer.City</td>
+                    <td>@customer.Country</td>
+                    <td>
+                        <a href="/customers/view/@customer.Id" class="btn btn-primary">
+                            <span class="oi oi-person"></span>
+                        </a>
+                        <a href="/customers/edit/@customer.Id" class="btn alert-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" onclick="@(()=>Delete(customer.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+
+
+}
