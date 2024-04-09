@@ -1,0 +1,37 @@
+﻿
+@using BlazorApp.Shared.Domain.Name
+@page "/getname"
+
+<h3 class="card-title">Get Name</h3>
+<hr />
+<br />
+<h4>
+    <p>
+        a page that returns the name of an employee or a manager class
+    </p>
+    <p>
+        the data are from a repository
+    </p>
+</h4>
+<hr />
+<br />
+
+<select @onchange="@HandleSelectionChange" class="form-select">
+    <option selected>Select Person</option>
+    @foreach (var manager in _managers)
+    {
+        managerCount = managerCount + 1;
+
+        <option value="@PrintClassName.PrintName(manager)">Manager @managerCount</option>
+    }
+    @foreach (var employee in _employees)
+    {
+        employeeCount = employeeCount + 1;
+        <option value="@PrintClassName.PrintName(employee)">Employee @employeeCount</option>
+    }
+</select>
+
+@code {
+
+
+}
