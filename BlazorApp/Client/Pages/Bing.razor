@@ -1,0 +1,65 @@
+﻿@page "/bing"
+
+
+<h3 class="card-title">Bing hello</h3>
+<hr />
+<br />
+
+<div>
+    <input @bind="UserInput" placeholder="Enter a location" class="form-control" />
+    <br />
+    <button class="btn btn-secondary" @onclick="HandleSubmit2">Search Locations</button>
+    <hr />
+    <br />
+</div>
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <div class="h4 ">@errorString</div>
+}
+else if (PlacesFound is null)
+{
+    <div class="h2">Waiting Data</div>
+}
+else
+{
+    <div>
+        <table class="table table-danger table-striped-columns ">
+            <thead class="table table-secondary">
+                <tr>
+                    <th>Address</th>
+                    <th>Country</th>
+                    <th>Admin District</th>
+                    <th>Admin District2</th>
+                    <th>Name</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var place in PlacesFound.ResourceSets[0].Resources[0].value)
+                {
+                    <tr>
+                        <td>@place.Address.FormattedAddress</td>
+                        <td>@place.Address.CountryRegion</td>
+                        <td>@place.Address.AdminDistrict</td>
+                        <td>@place.Address.AdminDistrict2</td>
+                        <td>@place.Name</td>
+                    </tr>
+                }
+
+
+
+            </tbody>
+
+        </table>
+    </div>
+}
+
+
+
+@code {
+
+}
+
